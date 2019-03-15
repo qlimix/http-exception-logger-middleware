@@ -6,24 +6,18 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Qlimix\Http\Exception\InternalServerErrorException;
 use Qlimix\Log\Logger\Exception\ExceptionLoggerInterface;
+use Throwable;
 
 final class ExceptionLoggerMiddleware implements MiddlewareInterface
 {
     /** @var ExceptionLoggerInterface */
     private $logger;
 
-    /** @var ErrorResponseBuilderInterface */
-    private $errorResponseBuilder;
-
-    /**
-     * @param ExceptionLoggerInterface $logger
-     * @param ErrorResponseBuilderInterface $errorResponseBuilder
-     */
-    public function __construct(ExceptionLoggerInterface $logger, ErrorResponseBuilderInterface $errorResponseBuilder)
+    public function __construct(ExceptionLoggerInterface $logger)
     {
         $this->logger = $logger;
-        $this->errorResponseBuilder = $errorResponseBuilder;
     }
 
     /**
@@ -33,10 +27,9 @@ final class ExceptionLoggerMiddleware implements MiddlewareInterface
     {
         try {
             return $handler->handle($request);
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             $this->logger->alert('http', $exception);
-
-            return $this->errorResponseBuilder->build($exception);
+            throw new InternalServerErrorException($exception);
         }
     }
 }
