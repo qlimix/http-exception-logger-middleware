@@ -21,6 +21,8 @@ final class ExceptionLoggerMiddleware implements MiddlewareInterface
     }
 
     /**
+     * @throws InternalServerErrorException
+     *
      * @inheritDoc
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

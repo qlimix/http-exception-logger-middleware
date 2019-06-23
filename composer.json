@@ -1,35 +1,40 @@
 {
     "name": "qlimix/http-exception-logger-middleware",
-    "type": "package",
-    "license": "LGPL-3.0-only",
+    "type": "library",
+    "description": "Logging exceptions during the http request with PSR-15 middleware",
+    "license": "MIT",
+    "keywords": [
+        "http",
+        "logging",
+        "exception",
+        "PSR-15",
+        "middleware"
+    ],
     "authors": [
         {
             "name": "frank",
             "email": "frank@qlimix.net"
         }
     ],
+    "require": {
+        "qlimix/http": "^1.0",
+        "qlimix/logging-exception-handler": "^1.0",
+        "psr/http-server-middleware": "^1.0"
+    },
     "autoload": {
         "psr-4": {
             "Qlimix\\HttpMiddleware\\": "src/"
         }
     },
-    "require": {
-        "qlimix/http": "dev-master",
-        "qlimix/logging-exception-handler": "dev-master",
-        "psr/http-server-middleware": "^1.0"
+    "autoload-dev": {
+        "psr-4": {
+            "Qlimix\\Tests\\HttpMiddleware\\": "tests/"
+        }
     },
     "config": {
         "sort-packages": true
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@bitbucket.org:qlimix/logging-exception-handler.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "git@bitbucket.org:qlimix/http.git"
-        }
-    ],
-    "minimum-stability": "dev"
+    "require-dev": {
+        "qlimix/code-standard": "^1.0"
+    }
 }
