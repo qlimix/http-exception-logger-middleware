@@ -1,1 +1,0 @@
-C:37:"PHPUnit\Runner\DefaultTestResultCache":297:{a:2:{s:7:"defects";a:1:{s:71:"Qlimix\Tests\HttpMiddleware\ExceptionLoggerMiddlewareTest::shouldHandle";i:6;}s:5:"times";a:2:{s:71:"Qlimix\Tests\HttpMiddleware\ExceptionLoggerMiddlewareTest::shouldHandle";d:0.03;s:68:"Qlimix\Tests\HttpMiddleware\ExceptionLoggerMiddlewareTest::shouldLog";d:0.004;}}}
