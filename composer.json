@@ -17,6 +17,7 @@
         }
     ],
     "require": {
+        "php": ">=7.2",
         "qlimix/http": "^1.0",
         "qlimix/logging-exception-handler": "^1.0",
         "psr/http-server-middleware": "^1.0"
